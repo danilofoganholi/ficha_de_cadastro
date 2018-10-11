@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Cadastro</title>
+	<script type="text/javascript" src="function.js" defer ></script>
+	<script type="text/javascript" src="cep.js" defer ></script>
+</head>
+
+<body>
+	<h1>CADASTRO DE CLIENTE</h1>
+	<form name="gerenet" enctype="application/x-www-form-urlencoded" id="form" action="finalizando.html" method="POST">
+		<p>
+			<label for="nome">Nome*</label>
+			<input type="text" id="name" onblur="aviso(this)" required >
+		</p>
+		<p>
+			<label for="cpf">CPF*</label>
+			<input type="text"  id="cpf" maxlength="11" required> 
+		</p>
+		<p>
+			<label for="data_nasc">Data de Nascimento</label>
+			<input type="date"  min="2000-12-31"> 
+		</p>
+		<p>
+			<label for="email">E-mail*</label>
+			<input type="email" x-moz-errormessage="Por favor, especifique um endereço de e-mail." required> 
+		</p>
+		<p>
+			<label for="cep">CEP</label>
+			<input name="cep" type="text" id="cep" value="" maxlength="9" onblur="pesquisacep(this.value)" >
+		</p>
+		<p>
+			<label for="rua">Rua</label>
+			<input name="rua" type="text" id="rua" > 
+		</p>
+		<p>
+			<label for="numero">Número</label>
+			<input type="text"  maxlength="6"> 
+		</p>
+		<p>
+			<label for="apto">Apartamento</label>
+			<input type="text"  maxlength="4">  
+		</p>
+		<p>
+			<label for="bl">Bloco</label>
+			<input type="text"  maxlength="4"> 
+		</p>
+		<p>
+			<label for="compl">Complemento</label>
+			<input type="text" > 
+		</p>
+		<p>
+			<label for="bairro">Bairro</label>
+			<input name="bairro" type="text" id="bairro" >  
+		</p>
+		<p>
+			<label for="cidade">Cidade</label>
+			<input name="cidade" type="text" id="cidade" >  
+		</p>
+		<p>
+			<label for="Estado">Estado</label>
+			<input name="uf" type="text" id="uf" >  
+		</p>
+		<p>
+			<label for="cel">Celular*</label>
+			<input type="text"  maxlength="11" min="8" required> 
+		</p>
+		<p>
+			<label for="cel2">Celular 2</label>
+			<input type="text"  maxlength="11">  
+		</p>
+		<p>
+			<label for="tel">Telefone</label>
+			<input type="text"  maxlength="11"> 
+		</p>
+		<p>
+			<label for="venc">Dia de Vencimento</label>
+			<select >
+				<option>10</option>
+				<option>20</option>
+			</select>
+		</p>
+		<p>
+			<label for="plano">Plano*</label>
+			<select required>
+				<option>2 MEGAS</option>
+				<option>3 MEGAS</option>
+				<option>5 MEGAS</option>
+				<option selected>10 MEGAS</option>
+				<option>20 MEGAS</option>
+				<option>30 MEGAS</option>
+				<option>50 MEGAS</option>
+				<option>90 MEGAS</option>
+			</select>
+		</p>
+		<p>
+			<label for="cabo">Possui cabos de internet na residência?</label>
+			<input type="radio" name="cabo" value=sim  > SIM
+			<input type="radio" name="cabo" value=nao selected> NÃO 
+		</p>
+		<p>
+			<label for="roteador">Possui roteador?</label>
+			<input type="radio" name="roteador" value=sim  > SIM
+			<input type="radio" name="roteador" value=nao selected> NÃO
+		</p>
+		<p>
+			<label for="periodo">Período da instalação</label>
+			<input type="radio" name="periodo" value=manha  > MANHA 
+			<input type="radio" name="periodo" value=tarde  > TARDE
+			<input type="radio" name="periodo" value=comercial  selected> COMERCIAL 
+		</p>
+		<p>
+			<label for="pagamento">Forma de Pagamento</label>
+			<input type="checkbox" name="forma1" > DINHEIRO
+			<input type="checkbox" name="forma2" > CARTÃO DE CRÉDITO
+			<input type="checkbox" name="forma3" > CARTÃO DE DÉBITO 
+		</p>
+		<p>
+			<button type="submit" id="botao"> ENVIAR </button>
+		</p>
+	</form>
+</body>
+</html>
