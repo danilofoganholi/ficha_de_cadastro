@@ -1,14 +1,5 @@
-// VARIAVEL PARA O INPUT DO CPF
-var cpf = document.getElementById("cpf");
-
-// VARIAVEL PARA O FORMULARIO
-var form = document.getElementById("form");
-
-//VARIAVEL PARA LISTA DE INPUTS
-var inputs = document.getElementsByTagName("input")
-
-var nome = document.getElementById("name")
-
+//VARIAVEL AUXILIAR 
+var aux = false;
 
 //TESTA SE O CPF É VALIDO
 function TestaCPF(strCPF) {
@@ -35,8 +26,12 @@ function TestaCPF(strCPF) {
     return true;
 }
 //FUNCAO QUE TESTA SE O CPF É VALIDO
-function testarCPF() { 
-    var teste = TestaCPF(cpf.value)
+function CPF(campo) { 
+    // VARIAVEL PARA O INPUT DO CPF
+    var cpf = document.getElementById("cpf");
+
+    //TESTADOR DE CPF
+    var teste = TestaCPF(campo.value)
     if (teste== false ) {
         erro(cpf);
     } 
@@ -52,7 +47,9 @@ function erro(campo) {
 function certo(campo) { 
     campo.style.backgroundColor = "#66ff66" 
 }
-
+function neutro(campo) {
+    campo.style.backgroundColor = ""
+}
 //AVISO DE CAMPO OBRIGATORIO
 function aviso(campo){
     //QUEBRA DE LINHA 
@@ -81,29 +78,26 @@ function aviso(campo){
         label.style.color = "red";
 
         //MUDANDO O BACKGROUND
-        erro(campo) 
+        erro(campo)
+        aux= true 
+    }
+    else {
+        certo(campo)
+    }
+}
+//RETIRA AVISO
+function retira_aviso(campo) {
+    if (aux== true){
+        var label= document.getElementsByTagName("label")
+        var br = document.getElementsByTagName("br")
+        br[0].remove()
+        label[1].remove()
+        campo.style.backgroundColor = "" 
     }
 }
 
 
 
-/*
-function verifica(campo) {
-    var todos_label = document.getElementsByTagName("label")
-    alert(todos_label)
-    alert(campo)
-    if ((campo) = "" ) {
-        for ( var i = 0; i<todos_label.length; 1++){
-            if (todos_label[i].value = "Preenchimento obrigatorio" ){
-                todos_label[i].remove()
-            } 
-        }
-        
-    }
-}
-*/
-
-cpf.onblur = testarCPF
 
 
 
