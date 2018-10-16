@@ -1,9 +1,9 @@
 //VARIAVEL AUXILIAR 
 var aux = false;
 //VARIAVEL AIXILIAR PARA O CPF
-var aux1 = false 
+var aux1 = false; 
 //VARIAVEL AIXILIAR PARA O EMAIL
-var aux2 = false 
+var aux2 = false; 
 
 //TESTA SE O CPF É VALIDO
 function TestaCPF(strCPF) {
@@ -187,13 +187,13 @@ function retira_aviso_CPF(campo) {
             aux1= false
         }
         else if (label[3].innerText =="Preenchimento obrigatorio") { 
-            br[0].remove()
+            br[1].remove()
             label[3].remove()
             neutro(campo)
             aux1= false
         }
         else if (label[3].innerText =="CPF inválido!") { 
-            br[0].remove()
+            br[1].remove()
             label[3].remove()
             neutro(campo)
             aux1= false
@@ -252,14 +252,19 @@ function retira_aviso_email(campo) {
             aux2= false
         }
         else if (label[5].innerText =="Preenchimento obrigatorio") { 
-            br[0].remove()
+            br[1].remove()
             label[5].remove()
+            neutro(campo)
+            aux2= false
+        }
+        else if (label[6].innerText =="Preenchimento obrigatorio") { 
+            br[2].remove()
+            label[6].remove()
             neutro(campo)
             aux2= false
         }
     }
 }
-
 
 
 
