@@ -1,6 +1,4 @@
-//VARIAVEL AIXILIAR PARA O CEP
-var aux3 = false; 
-
+//LIMPANDO FORMULÁRIO
 function limpa_formulário_cep() {
         //Limpa valores do formulário de cep.
         document.getElementById('rua').value=("");
@@ -9,7 +7,7 @@ function limpa_formulário_cep() {
         document.getElementById('uf').value=("");
         document.getElementById('ibge').value=("");
 }
-
+//PEGANDO RESPOSTA DO SERVIDOR
 function meu_callback(conteudo) {
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
@@ -24,7 +22,7 @@ function meu_callback(conteudo) {
         alert("CEP não encontrado.");
     }
 }
-    
+//PROCURA CEP    
 function pesquisacep(campo, valor) {
     
     //Nova variável "cep" somente com dígitos.
@@ -72,7 +70,6 @@ function pesquisacep(campo, valor) {
         aviso_CEP(campo, 1)
     }
 }
-
 //AVISO DE CAMPO OBRIGATORIO NO CEP
 function aviso_CEP(campo, escolha){
 
@@ -86,12 +83,20 @@ function aviso_CEP(campo, escolha){
     if (escolha == 1 ){ 
 
         //TEXTO DE AVISO DE OBRIGATORIO
-        var text = document.createTextNode("Preenchimento obrigatorio")
+        var text = document.createTextNode("Preenchimento Obrigatório")
+
+        //COLOCANDO O ID NA LABEL E BR CRIADAS
+        label.id = "aviso_cep"
+        br.id = "aviso_br_cep"
 
         //INSERINDO O TEXTO DE AVISO NO CAMPO QUE SERA COLOCADO
         label.appendChild(text)
     }
     else if (escolha == 2){ 
+
+        //COLOCANDO O ID NA LABEL E BR CRIADAS
+        label.id = "aviso_cep1"
+        br.id = "aviso_br_cep1"
 
         //TEXTO DE AVISO DE INVÁLIDO
         var text = document.createTextNode("CEP inválido!")
@@ -113,39 +118,29 @@ function aviso_CEP(campo, escolha){
 
     //MUDANDO O BACKGROUND
     erro(campo)
-    aux3 = true 
-
 }
+//RETIRA AVISO DE CEP
+function retira_aviso_cep(campo,name) {
 
-function retira_aviso_cep(campo) {
-    if (aux3 == true){
+    var label_aviso = document.getElementById("aviso_"+name)
+    var br_aviso = document.getElementById("aviso_br_"+name)
 
-        var label= document.getElementsByTagName("label")
-        var br = document.getElementsByTagName("br")
-
-        if (label[5].innerText =="Preenchimento obrigatorio") { 
-            br[0].remove()
-            label[5].remove()
+    if (label_aviso != null ) {
+        if (br_aviso != null) { 
+            br_aviso.remove()
+            label_aviso.remove()
             neutro(campo)
-            aux3= false
-        }
-        else if (label[6].innerText =="Preenchimento obrigatorio") { 
-            br[1].remove()
-            label[6].remove()
-            neutro(campo)
-            aux3= false
-        }
-        else if (label[7].innerText =="Preenchimento obrigatorio") { 
-            br[2].remove()
-            label[7].remove()
-            neutro(campo)
-            aux3= false
-        }
-        else if (label[8].innerText =="Preenchimento obrigatorio") { 
-            br[3].remove()
-            label[8].remove()
-            neutro(campo)
-            aux3= false
         }
     }
+    else {
+        label_aviso = document.getElementById("aviso_"+name+ '1' )
+        br_aviso = document.getElementById("aviso_br_"+name+ '1')
+        if (label_aviso != null ) {
+            if (br_aviso != null) { 
+                br_aviso.remove()
+                label_aviso.remove()
+                neutro(campo)
+            }
+        }
+    }   
 }

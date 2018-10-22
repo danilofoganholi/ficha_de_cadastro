@@ -1,9 +1,5 @@
-//VARIAVEL AUXILIAR 
-var aux = false;
-//VARIAVEL AIXILIAR PARA O CPF
-var aux1 = false; 
-//VARIAVEL AIXILIAR PARA O EMAIL
-var aux2 = false; 
+//TEXTO DE AVISO 
+var aviso_text = 'Preenchimento Obrigatório'
 
 //TESTA SE O CPF É VALIDO
 function TestaCPF(strCPF) {
@@ -30,15 +26,17 @@ function TestaCPF(strCPF) {
     return true;
 }
 //FUNCAO QUE TESTA SE O CPF É VALIDO
-function CPF(campo,valor) { 
+function TESTA_CPF(campo,valor) { 
 
     //TESTADOR DE CPF
     var teste = TestaCPF(valor)
+
+    //COLOCAR AVISO 
     if (teste== false ) {
         aviso_CPF(campo)
     } 
     else if (teste == true) {
-        certo(cpf);
+        certo(campo);
     }
 }
 //TROCA BACKGROUND PARA VERMELHO
@@ -63,10 +61,14 @@ function aviso(campo){
     var label = document.createElement("label")
 
     //TEXTO DE AVISO
-    var text = document.createTextNode("Preenchimento obrigatorio")
+    var text = document.createTextNode(aviso_text)
 
     //INSERINDO O TEXTO DE AVISO NO CAMPO QUE SERA COLOCADO
     label.appendChild(text)
+
+    //COLOCANDO O ID NA LABEL E BR CRIADAS
+    label.id = "aviso_nome"
+    br.id = "aviso_br_nome"
     
     //VERIFICANDO SE O CAMPO ESTA VAZIO
     if(campo.value == "") {
@@ -84,7 +86,6 @@ function aviso(campo){
 
         //MUDANDO O BACKGROUND
         erro(campo)
-        aux= true 
     }
 
     else {
@@ -102,12 +103,14 @@ function aviso_CPF(campo){
         var label = document.createElement("label")
 
         //TEXTO DE AVISO
-        var text = document.createTextNode("Preenchimento obrigatorio")
+        var text = document.createTextNode(aviso_text)
 
         //INSERINDO O TEXTO DE AVISO NO CAMPO QUE SERA COLOCADO
         label.appendChild(text)
         
-        //VERIFICANDO SE O CAMPO ESTA VAZIO
+        //COLOCANDO O ID NA LABEL E BR CRIADAS
+        label.id = "aviso_CPF"
+        br.id = "aviso_br_CPF"
 
         //REFERENCIA DE ONDE SERA COLOCADO O ITEM
         var lista = document.getElementsByTagName("p")[1]
@@ -122,7 +125,6 @@ function aviso_CPF(campo){
 
         //MUDANDO O BACKGROUND
         erro(campo)
-        aux1= true 
     }
     else {
 
@@ -138,7 +140,9 @@ function aviso_CPF(campo){
         //INSERINDO O TEXTO DE AVISO NO CAMPO QUE SERA COLOCADO
         label.appendChild(text)
         
-        //VERIFICANDO SE O CAMPO ESTA VAZIO
+        //COLOCANDO O ID NA LABEL E BR CRIADAS
+        label.id = "aviso_CPF1"
+        br.id = "aviso_br_CPF1"
 
         //REFERENCIA DE ONDE SERA COLOCADO O ITEM
         var lista = document.getElementsByTagName("p")[1]
@@ -153,51 +157,6 @@ function aviso_CPF(campo){
 
         //MUDANDO O BACKGROUND
         erro(campo)
-        aux1= true 
-
-    }
-}
-//RETIRA AVISO DE NOME
-function retira_aviso(campo) {
-    if (aux== true){
-        var label= document.getElementsByTagName("label")
-        var br = document.getElementsByTagName("br")
-        br[0].remove()
-        label[1].remove()
-        neutro(campo)
-        aux= false
-    }
-}
-//RETIRAR O AVISO DE CPF
-function retira_aviso_CPF(campo) {
-    if (aux1 == true){
-
-        var label= document.getElementsByTagName("label")
-        var br = document.getElementsByTagName("br")
-        if (label[2].innerText =="Preenchimento obrigatorio") { 
-            br[0].remove()
-            label[2].remove()
-            neutro(campo)
-            aux1= false
-        }
-        else if (label[2].innerText =="CPF inválido!") { 
-            br[0].remove()
-            label[2].remove()
-            neutro(campo)
-            aux1= false
-        }
-        else if (label[3].innerText =="Preenchimento obrigatorio") { 
-            br[1].remove()
-            label[3].remove()
-            neutro(campo)
-            aux1= false
-        }
-        else if (label[3].innerText =="CPF inválido!") { 
-            br[1].remove()
-            label[3].remove()
-            neutro(campo)
-            aux1= false
-        }
     }
 }
 //AVISO DE CAMPO OBRIGATORIO NO EMAIL
@@ -210,10 +169,14 @@ function aviso_email(campo){
     var label = document.createElement("label")
 
     //TEXTO DE AVISO
-    var text = document.createTextNode("Preenchimento obrigatorio")
+    var text = document.createTextNode(aviso_text)
 
     //INSERINDO O TEXTO DE AVISO NO CAMPO QUE SERA COLOCADO
     label.appendChild(text)
+
+    //COLOCANDO O ID NA LABEL E BR CRIADAS
+    label.id = "aviso_email"
+    br.id = "aviso_br_email"
     
     //VERIFICANDO SE O CAMPO ESTA VAZIO
     if(campo.value == "") {
@@ -231,40 +194,78 @@ function aviso_email(campo){
 
         //MUDANDO O BACKGROUND
         erro(campo)
-        aux2= true 
     }
 
     else {
         certo(campo)
     }
 }
-//RETIRAR O AVISO DE EMAIL
-function retira_aviso_email(campo) {
-    if (aux2 == true){
+//AVISO DE CAMPO OBRIGATORIO CELULAR
+function aviso_celular(campo) { 
 
-        var label= document.getElementsByTagName("label")
-        var br = document.getElementsByTagName("br")
+    //QUEBRA DE LINHA 
+    var br = document.createElement("br")
 
-        if (label[4].innerText =="Preenchimento obrigatorio") { 
-            br[0].remove()
-            label[4].remove()
-            neutro(campo)
-            aux2= false
-        }
-        else if (label[5].innerText =="Preenchimento obrigatorio") { 
-            br[1].remove()
-            label[5].remove()
-            neutro(campo)
-            aux2= false
-        }
-        else if (label[6].innerText =="Preenchimento obrigatorio") { 
-            br[2].remove()
-            label[6].remove()
-            neutro(campo)
-            aux2= false
-        }
+    //TEXTO SIMPLES
+    var label = document.createElement("label")
+
+    //TEXTO DE AVISO
+    var text = document.createTextNode(aviso_text)
+
+    //INSERINDO O TEXTO DE AVISO NO CAMPO QUE SERA COLOCADO
+    label.appendChild(text)
+
+    //COLOCANDO O ID NA LABEL E BR CRIADAS
+    label.id = "aviso_celular"
+    br.id = "aviso_br_celular"
+    
+    //VERIFICANDO SE O CAMPO ESTA VAZIO
+    if(campo.value == "") {
+
+        //REFERENCIA DE ONDE SERA COLOCADO O ITEM
+        var lista = document.getElementsByTagName("p")[13]
+        var itens = document.getElementsByTagName("/p") 
+        
+        //ISERINDO A QUEBRA DE LINHA
+        lista.insertBefore( br, itens[0])
+
+        //INSERINDO O AVISO EM VERMELHO
+        lista.insertBefore( label, itens[0]);
+        label.style.color = "red";
+
+        //MUDANDO O BACKGROUND
+        erro(campo)
+    }
+    else {
+        certo(campo)
     }
 }
+//RETIRA AVISO DE NOME
+function retira_aviso(campo,name) {
+
+    var label_aviso = document.getElementById("aviso_"+name)
+    var br_aviso = document.getElementById("aviso_br_"+name)
+
+    if (label_aviso != null ) {
+        if (br_aviso != null) { 
+            br_aviso.remove()
+            label_aviso.remove()
+            neutro(campo)
+        }
+    }
+    else if (name=='CPF') {
+        label_aviso = document.getElementById("aviso_"+name+ '1' )
+        br_aviso = document.getElementById("aviso_br_"+name+ '1')
+        if (label_aviso != null ) {
+            if (br_aviso != null) { 
+                br_aviso.remove()
+                label_aviso.remove()
+                neutro(campo)
+            }
+        }
+    }   
+}
+
 
 
 
