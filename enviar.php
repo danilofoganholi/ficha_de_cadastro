@@ -11,6 +11,7 @@ $headers = "From: " .$email;
 $nome = $_POST['nome'];
 $cpf = $_POST['CPF'];
 $data_de_nasc = $_POST['data_de_nascimento'];
+$sexo = $_POST['sexo']
 $email = $_POST['email'];
 $cep = $_POST['CEP'];
 $rua = $_POST['rua'];
@@ -29,7 +30,7 @@ $plano = $_POST['plano'];
 $cabos = $_POST['cabo'];
 $roteador = $_POST['roteador'];
 $periodo = $_POST['periodo'];
-$pagamento = $_POST['forma1'];
+$pagamento = $_POST['forma'];
 
 
 //MONTANDO CORPO DO EMAIL 
@@ -38,10 +39,11 @@ $corpoemail = "Ficha de Cadastro
             Nome: " .$nome. "
             CPF: " .$cpf. "
             Data de Nascimento: " .$data_de_nasc. "
+            Sexo: " .$sexo. "
             Email: " .$email. "
             CEP: " .$cep. "
             Rua: " .$rua. "
-            Número: " .$numero. "
+            Numero: " .$numero. "
             Apartamento: " .$apartamento. "
             Bloco: " .$bloco. "
             Complemento: " .$complemento. "
@@ -53,18 +55,18 @@ $corpoemail = "Ficha de Cadastro
             Telefone: " .$telefone. "
             Dia de Vencimento: " .$vencimento. "
             Plano: " .$plano. "
-            Possui cabos de internet na residência? " .$cabos. "
+            Possui cabos de internet na residencia? " .$cabos. "
             Possui roteador? " .$roteador. "
-            Período da instalação " .$periodo. "
-            Forma de Pagamento " .$pagamento. " ";
+            Periodo da instalacao: " .$periodo. "
+            Forma de Pagamento: " .$pagamento. " ";
 
 
 // ENVIANDO O EMAIL
-if (mail($destinatario, 'NOVO CADASTRO REALIZADO PELO SITE' , $corpoemail , $headers)) {
-    echo "<script>alert('Mensagem enviada com sucesso!');</script>"
-    header("Location: index.php"); 
+if (mail($destinatario, 'NOVO CADASTRO' , $corpoemail , $headers)) {
+    echo "<script>alert('Mensagem enviada com sucesso!');</script>"; 
+    header("Location:libercom.net.br");
 }
 else {
-    echo "<script> alert('Erro ao enviar cadastro.')</script>"
+    echo "<script> alert('Erro ao enviar cadastro.')</script>";
 }
 ?>
