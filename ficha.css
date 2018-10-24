@@ -1,0 +1,8 @@
+/*CAMPO BRILHA AO SER SELECIONADO*/ 
+input:active,select:active {
+    border:solid 1px;
+    box-shadow: 0px 0px 2px 2px #7ec2e4;
+  }
+.p {
+    padding: 0px 10px 0px 10px
+}

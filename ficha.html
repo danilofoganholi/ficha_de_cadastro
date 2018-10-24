@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Cadastro</title>
+	<script type="text/javascript" src="function.js" defer ></script>
+	<script type="text/javascript" src="cep.js" defer ></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script type="text/css" src="ficha.css" ></script>
+	<style>
+		body,form,div,p html {
+			display: block
+		}
+	</style>
+</head>
+
+<body style="width:50%; padding: 20px">
+	<form name="gerenet" enctype="application/x-www-form-urlencoded" id="form" action="https://libercom.net.br/ficha_de_cadastro/enviar.php" method="post" class="w3-container w3-card-4 w3-light-grey" style=" padding: 0px 0px 0px 0px;">
+		<!--TITULO-->
+		<div class="w3-container w3-blue" style="width:100%; padding: 0px " > <h1 class="w3-center" >CADASTRO DE CLIENTE</h1> </div> 
+		<!--NOME-->
+		<p style="width:100%; padding: 0px 10px 0px 10px; ">
+			<label class="w3-text-blue" >Nome*</label>
+			<input type="text" id="nome" name='nome' onblur="aviso(this)" onfocus="retira_aviso(this, id )" class="w3-input" required >
+		</p>
+		<!--CPF-->
+		<p style="float:left; padding: 0px 3px 0px 10px; width:40%;" >
+			<label  class="w3-text-blue">CPF*</label>
+			<input type="text"  id="CPF" name='CPF' maxlength="11" onblur="TESTA_CPF(this, this.value )" onfocus="retira_aviso(this, id )" class="w3-input" required> 
+		</p>
+		<!--DATA DE NASCIMENTO-->
+		<p style="float:left; padding: 0px 3px 0px 3px; width:30%;">
+			<label  class="w3-text-blue">Data de Nascimento</label>
+			<input type="date" name='data_de_nascimento'  max="2000-12-31" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--SEXO-->
+		<p style="float:left; padding: 0px 10px 0px 3px; width:30%;">
+			<label class="w3-text-blue">Sexo</label>
+			<select name='sexo' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" >
+				<option>MASCULINO</option>
+				<option>FEMININO</option>
+				<option>OUTROS</option>
+			</select>
+		</p>
+		<!--EMAIL-->
+		<p style="float:left; width:100%; padding: 0px 10px 0px 10px;" >
+			<label for="email" class="w3-text-blue">E-mail*</label>
+			<input type="email" id="email" name='email' onblur="aviso_email(this)" onfocus="retira_aviso(this, id )" class="w3-input" required> 
+		</p>
+		<!--CEP-->
+		<p style="float:left; width:20%; padding: 0px 3px 0px 10px;">
+			<label for="cep" class="w3-text-blue">CEP*</label>
+			<input id="cep" name='CEP' type="text" value="" maxlength="9"  onblur="pesquisacep(this ,this.value)" onfocus="retira_aviso_cep(this, id)" class="w3-input">
+		</p>
+		<!--RUA-->
+		<p style="float:left; width:80%; padding: 0px 10px 0px 3px;">
+			<label for="logradouro" class="w3-text-blue">Rua</label>
+			<input id="logradouro" name='rua' value="" type="text" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--NUMERO-->
+		<p style="float:left; width:30%; padding: 0px 3px 0px 10px;">
+			<label for="numero" class="w3-text-blue" >Número</label>
+			<input type="text" name='numero' maxlength="6" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"v> 
+		</p>
+		<!--APARTAMENTO-->
+		<p style="float:left; width:30%; padding: 0px 3px 0px 3px;">
+			<label for="apto" class="w3-text-blue">Apartamento</label>
+			<input type="text" name='apartamento' maxlength="6" onblur="certo(this)" onfocus="neutro(this)" class="w3-input" >  
+		</p>
+		<!--BLOCO-->
+		<p style="float:left; width:40%; padding: 0px 10px 0px 3px;">
+			<label for="bl" class="w3-text-blue">Bloco</label>
+			<input type="text" name='bloco' maxlength="4" onblur="certo(this)"onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--COMLEMENTO-->
+		<p style="float:left; width:40%; padding: 0px 10px 0px 3px;">
+			<label for="compl" class="w3-text-blue">Complemento</label >
+			<input type="text" name='complemento' onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--BAIROO-->
+		<p class="w3-third">
+			<label for="bairro" class="w3-text-blue">Bairro</label>
+			<input name="bairro" name='bairro' value="" type="text" id="bairro" onblur="certo(this)" onfocus="neutro(this)" class="w3-input">  
+		</p>
+		<!--CIDADE-->
+		<p class="w3-third">
+			<label for="cidade" class="w3-text-blue">Cidade</label>
+			<input id="cidade" name='cidade' value="" type="text" onblur="certo(this)" onfocus="neutro(this)" class="w3-input">  
+		</p>
+		<!--ESTADO-->
+		<p class="w3-third">
+			<label for="uf" class="w3-text-blue">Estado</label>
+			<select id="uf" name='estado' value="" onblur="certo(this)" onfocus="neutro(this)" class="w3-select">
+				<option value="AC">Acre</option>
+				<option value="AL">Alagoas</option>
+				<option value="AP">Amapá</option>
+				<option value="AM">Amazonas</option>
+				<option value="BA">Bahia</option>
+				<option value="CE">Ceará</option>
+				<option value="DF">Distrito Federal</option>
+				<option value="ES">Espírito Santo</option>
+				<option value="GO">Goiás</option>
+				<option value="MA">Maranhão</option>
+				<option value="MT">Mato Grosso</option>
+				<option value="MS">Mato Grosso do Sul</option>
+				<option value="MG">Minas Gerais</option>
+				<option value="PA">Pará</option>
+				<option value="PB">Paraíba</option>
+				<option value="PR">Paraná</option>
+				<option value="PE">Pernambuco</option>
+				<option value="PI">Piauí</option>
+				<option value="RJ">Rio de Janeiro</option>
+				<option value="RN">Rio Grande do Norte</option>
+				<option value="RS">Rio Grande do Sul</option>
+				<option value="RO">Rondônia</option>
+				<option value="RR">Roraima</option>
+				<option value="SC">Santa Catarina</option>
+				<option value="SP" selected >São Paulo</option>
+				<option value="SE">Sergipe</option>
+				<option value="TO">Tocantins</option>
+			</select>
+		</p>
+		<!--CELULAR-->
+		<p class="w3-third">
+			<label for="cel" class="w3-text-blue" >Celular*</label>
+			<input type="text" name='celular' id="celular" onblur="aviso_celular(this )" onfocus="retira_aviso(this, id )" maxlength="11" min="8" class="w3-input" required> 
+		</p>
+		<!--CELULAR2-->
+		<p class="w3-third">
+			<label for="cel2" class="w3-text-blue">Celular 2</label>
+			<input type="text" name='celular2' onblur="certo(this)" onfocus="neutro(this)" maxlength="11" class="w3-input" >  
+		</p>
+		<!--TELEFONE-->
+		<p class="w3-third">
+			<label for="tel" class="w3-text-blue">Telefone</label>
+			<input type="text" name='telefone' onblur="certo(this)" onfocus="neutro(this)" maxlength="11" class="w3-input"> 
+		</p>
+		<!--DIA DE VENCIMENTO-->
+		<p class="w3-third">
+			<label for="venc" class="w3-text-blue">Dia de Vencimento</label>
+			<select name='vencimento' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" required>
+				<option>10</option>
+				<option>20</option>
+			</select>
+		</p>
+		<!--PLANO-->
+		<p class="w3-third">
+			<label for="plano" class="w3-text-blue">Plano*</label>
+			<select name='plano' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" required>
+				<option>2 MEGAS --- R$44,00 </option>
+				<option>3 MEGAS --- R$53,00 </option>
+				<option>5 MEGAS --- R$62,00 </option>
+				<option selected>10 MEGAS --- R$80,00 </option>
+				<option>20 MEGAS --- R$98,00 </option>
+				<option>30 MEGAS --- R$116,00 </option>
+				<option>50 MEGAS --- R$134,00 </option>
+				<option>90 MEGAS --- R$188,00 </option>
+			</select>
+		</p>
+		<!--CABOS-->
+		<p style="float:left;">
+			<label for="cabo" class="w3-text-blue">Possui cabos de internet na residência?</label>
+			<input type="radio" name="cabo" value='sim' class="w3-radio" > SIM
+			<input type="radio" name="cabo" value='nao' class="w3-radio" > NÃO 
+		</p>
+		<!--ROTEADOR-->
+		<p >
+			<label for="roteador" class="w3-text-blue">Possui roteador?</label>
+			<input type="radio" name="roteador" value='sim' class="w3-radio" > SIM
+			<input type="radio" name="roteador" value='nao' class="w3-radio" > NÃO
+		</p>
+		<!--PERIODO-->
+		<p >
+			<label for="periodo" class="w3-text-blue">Período da instalação</label>
+			<input type="radio" name="periodo" value='manha' class="w3-radio" > MANHA 
+			<input type="radio" name="periodo" value='tarde' class="w3-radio" > TARDE
+			<input type="radio" name="periodo" value='comercial' class="w3-radio" > COMERCIAL 
+		</p>
+		<!--PAGAMENTO-->
+		<p>
+			<label for="pagamento" class="w3-text-blue">Forma de Pagamento</label>
+			<input type="radio" name="forma" value='DINHEIRO' class="w3-radio" > DINHEIRO
+			<input type="radio" name="forma" value='CARTAO DE CREDITO' class="w3-radio" > CARTÃO DE CRÉDITO
+			<input type="radio" name="forma" value='CARTAO DE DEBITO' class="w3-radio" > CARTAO DE DEBITO
+		</p>
+		<!--BOTAO-->
+		<p class="w3-center">
+			<button type="submit" id="botao" class="w3-btn w3-blue"> ENVIAR </button>
+		</p>
+	</form>
+</body>
+</html>
