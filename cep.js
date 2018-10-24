@@ -73,9 +73,6 @@ function pesquisacep(campo, valor) {
 //AVISO DE CAMPO OBRIGATORIO NO CEP
 function aviso_CEP(campo, escolha){
 
-    //QUEBRA DE LINHA 
-    var br = document.createElement("br")
-
     //TEXTO SIMPLES
     var label = document.createElement("label")
 
@@ -87,7 +84,6 @@ function aviso_CEP(campo, escolha){
 
         //COLOCANDO O ID NA LABEL E BR CRIADAS
         label.id = "aviso_cep"
-        br.id = "aviso_br_cep"
 
         //INSERINDO O TEXTO DE AVISO NO CAMPO QUE SERA COLOCADO
         label.appendChild(text)
@@ -96,7 +92,6 @@ function aviso_CEP(campo, escolha){
 
         //COLOCANDO O ID NA LABEL E BR CRIADAS
         label.id = "aviso_cep1"
-        br.id = "aviso_br_cep1"
 
         //TEXTO DE AVISO DE INVÁLIDO
         var text = document.createTextNode("CEP inválido!")
@@ -106,11 +101,8 @@ function aviso_CEP(campo, escolha){
     }
 
     //REFERENCIA DE ONDE SERA COLOCADO O ITEM
-    var lista = document.getElementsByTagName("p")[4]
+    var lista = document.getElementsByTagName("p")[5]
     var itens = document.getElementsByTagName("/p") 
-    
-    //ISERINDO A QUEBRA DE LINHA
-    lista.insertBefore( br, itens[0])
 
     //INSERINDO O AVISO EM VERMELHO
     lista.insertBefore( label, itens[0]);
@@ -126,21 +118,15 @@ function retira_aviso_cep(campo,name) {
     var br_aviso = document.getElementById("aviso_br_"+name)
 
     if (label_aviso != null ) {
-        if (br_aviso != null) { 
-            br_aviso.remove()
-            label_aviso.remove()
-            neutro(campo)
-        }
+        label_aviso.remove()
+        neutro(campo)
     }
     else {
         label_aviso = document.getElementById("aviso_"+name+ '1' )
         br_aviso = document.getElementById("aviso_br_"+name+ '1')
         if (label_aviso != null ) {
-            if (br_aviso != null) { 
-                br_aviso.remove()
-                label_aviso.remove()
-                neutro(campo)
-            }
+            label_aviso.remove()
+            neutro(campo)
         }
     }   
 }

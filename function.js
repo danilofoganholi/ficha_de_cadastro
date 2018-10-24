@@ -54,9 +54,6 @@ function neutro(campo) {
 //AVISO DE CAMPO OBRIGATORIO NO NOME
 function aviso(campo){
 
-    //QUEBRA DE LINHA 
-    var br = document.createElement("br")
-
     //TEXTO SIMPLES
     var label = document.createElement("label")
 
@@ -68,7 +65,6 @@ function aviso(campo){
 
     //COLOCANDO O ID NA LABEL E BR CRIADAS
     label.id = "aviso_nome"
-    br.id = "aviso_br_nome"
     
     //VERIFICANDO SE O CAMPO ESTA VAZIO
     if(campo.value == "") {
@@ -77,9 +73,6 @@ function aviso(campo){
         var lista = document.getElementsByTagName("p")[0]
         var itens = document.getElementsByTagName("/p") 
         
-        //ISERINDO A QUEBRA DE LINHA
-        lista.insertBefore( br, itens[0])
-
         //INSERINDO O AVISO EM VERMELHO
         lista.insertBefore( label, itens[0]);
         label.style.color = "red";
@@ -96,9 +89,6 @@ function aviso(campo){
 function aviso_CPF(campo){
     if (campo.value == "") { 
 
-        //QUEBRA DE LINHA 
-        var br = document.createElement("br")
-
         //TEXTO SIMPLES
         var label = document.createElement("label")
 
@@ -110,14 +100,10 @@ function aviso_CPF(campo){
         
         //COLOCANDO O ID NA LABEL E BR CRIADAS
         label.id = "aviso_CPF"
-        br.id = "aviso_br_CPF"
 
         //REFERENCIA DE ONDE SERA COLOCADO O ITEM
         var lista = document.getElementsByTagName("p")[1]
         var itens = document.getElementsByTagName("/p") 
-        
-        //ISERINDO A QUEBRA DE LINHA
-        lista.insertBefore( br, itens[0])
 
         //INSERINDO O AVISO EM VERMELHO
         lista.insertBefore( label, itens[0]);
@@ -127,9 +113,6 @@ function aviso_CPF(campo){
         erro(campo)
     }
     else {
-
-        //QUEBRA DE LINHA 
-        var br = document.createElement("br")
 
         //TEXTO SIMPLES
         var label = document.createElement("label")
@@ -142,14 +125,10 @@ function aviso_CPF(campo){
         
         //COLOCANDO O ID NA LABEL E BR CRIADAS
         label.id = "aviso_CPF1"
-        br.id = "aviso_br_CPF1"
 
         //REFERENCIA DE ONDE SERA COLOCADO O ITEM
         var lista = document.getElementsByTagName("p")[1]
         var itens = document.getElementsByTagName("/p") 
-        
-        //ISERINDO A QUEBRA DE LINHA
-        lista.insertBefore( br, itens[0])
 
         //INSERINDO O AVISO EM VERMELHO
         lista.insertBefore( label, itens[0]);
@@ -162,9 +141,6 @@ function aviso_CPF(campo){
 //AVISO DE CAMPO OBRIGATORIO NO EMAIL
 function aviso_email(campo){
 
-    //QUEBRA DE LINHA 
-    var br = document.createElement("br")
-
     //TEXTO SIMPLES
     var label = document.createElement("label")
 
@@ -176,17 +152,13 @@ function aviso_email(campo){
 
     //COLOCANDO O ID NA LABEL E BR CRIADAS
     label.id = "aviso_email"
-    br.id = "aviso_br_email"
     
     //VERIFICANDO SE O CAMPO ESTA VAZIO
     if(campo.value == "") {
 
         //REFERENCIA DE ONDE SERA COLOCADO O ITEM
-        var lista = document.getElementsByTagName("p")[3]
+        var lista = document.getElementsByTagName("p")[4]
         var itens = document.getElementsByTagName("/p") 
-        
-        //ISERINDO A QUEBRA DE LINHA
-        lista.insertBefore( br, itens[0])
 
         //INSERINDO O AVISO EM VERMELHO
         lista.insertBefore( label, itens[0]);
@@ -203,9 +175,6 @@ function aviso_email(campo){
 //AVISO DE CAMPO OBRIGATORIO CELULAR
 function aviso_celular(campo) { 
 
-    //QUEBRA DE LINHA 
-    var br = document.createElement("br")
-
     //TEXTO SIMPLES
     var label = document.createElement("label")
 
@@ -217,17 +186,13 @@ function aviso_celular(campo) {
 
     //COLOCANDO O ID NA LABEL E BR CRIADAS
     label.id = "aviso_celular"
-    br.id = "aviso_br_celular"
-    
+        
     //VERIFICANDO SE O CAMPO ESTA VAZIO
     if(campo.value == "") {
 
         //REFERENCIA DE ONDE SERA COLOCADO O ITEM
-        var lista = document.getElementsByTagName("p")[13]
+        var lista = document.getElementsByTagName("p")[14]
         var itens = document.getElementsByTagName("/p") 
-        
-        //ISERINDO A QUEBRA DE LINHA
-        lista.insertBefore( br, itens[0])
 
         //INSERINDO O AVISO EM VERMELHO
         lista.insertBefore( label, itens[0]);
@@ -247,21 +212,15 @@ function retira_aviso(campo,name) {
     var br_aviso = document.getElementById("aviso_br_"+name)
 
     if (label_aviso != null ) {
-        if (br_aviso != null) { 
-            br_aviso.remove()
-            label_aviso.remove()
-            neutro(campo)
-        }
+        label_aviso.remove()
+        neutro(campo)
     }
     else if (name=='CPF') {
         label_aviso = document.getElementById("aviso_"+name+ '1' )
         br_aviso = document.getElementById("aviso_br_"+name+ '1')
         if (label_aviso != null ) {
-            if (br_aviso != null) { 
-                br_aviso.remove()
-                label_aviso.remove()
-                neutro(campo)
-            }
+            label_aviso.remove()
+            neutro(campo)
         }
     }   
 }

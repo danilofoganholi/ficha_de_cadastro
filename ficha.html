@@ -8,174 +8,186 @@
 	<script type="text/javascript" src="cep.js" defer ></script>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<style>
-		input:active,select:active {
-			    border:solid 1px;
-   				box-shadow: 0px 0px 2px 2px #607d8b;
+		p { padding: 0px 15px 0px 15px;}
+		input,select {
+				display: inline;
   			}
 	</style>
 </head>
 
-<body style="padding: 50px 50px 50px 50px;">
+<body style="margin: auto ; width:50%;">
 	<form name="gerenet" enctype="application/x-www-form-urlencoded" id="form" action="https://libercom.net.br/ficha_de_cadastro/enviar.php" method="post" class="w3-container w3-card-4 w3-light-grey" style=" padding: 0px 0px 0px 0px;">
 		<div class="w3-container w3-blue" style="width:100%; padding: 0px " > <h1 class="w3-center" >CADASTRO DE CLIENTE</h1> </div> 
-		<p style="width:60%; padding: 0px 10px 0px 10px; ">
-			<label class="w3-text-blue" >Nome*</label>
+		<!--NOME-->
+		<p style="width:100%; ">
+			<label class="w3-text-blue" >Nome*:</label>
 			<input type="text" id="nome" name='nome' onblur="aviso(this)" onfocus="retira_aviso(this, id )" class="w3-input" required >
 		</p>
-		<p style="float:left; padding: 0px 10px 0px 10px; width:35%; " >
-			<label  class="w3-text-blue">CPF*</label>
+		<!--CPF-->
+		<p style=" float:left; width:40%; padding-right: 5px; " >
+			<label  class="w3-text-blue">CPF*:</label>
 			<input type="text"  id="CPF" name='CPF' maxlength="11" onblur="TESTA_CPF(this, this.value )" onfocus="retira_aviso(this, id )" class="w3-input" required> 
 		</p>
-			<p class="w3-third">
-				<label  class="w3-text-blue">Data de Nascimento</label>
-				<input type="date" name='data_de_nascimento'  max="2000-12-31" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
-			</p>
-			<p class="w3-third">
-				<label class="w3-text-blue">Sexo</label>
-				<select name='sexo' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" >
-					<option>MASCULINO</option>
-					<option>FEMININO</option>
-					<option>OUTROS</option>
-				</select>
-			</p>
-		<div class="w3-row-padding">
-			<p>
-				<label for="email" class="w3-text-blue">E-mail*</label>
-				<input type="email" id="email" name='email' onblur="aviso_email(this)" onfocus="retira_aviso(this, id )" class="w3-input" required> 
-			</p>
-		</div>
-		<div class="w3-row-padding">
-			<p class="w3-third">
-				<label for="cep" class="w3-text-blue">CEP*</label>
-				<input id="cep" name='CEP' type="text" value="" maxlength="9"  onblur="pesquisacep(this ,this.value)" onfocus="retira_aviso_cep(this, id)" class="w3-input">
-			</p>
-			<p class="w3-third">
-				<label for="logradouro" class="w3-text-blue">Rua</label>
-				<input id="logradouro" name='rua' value="" type="text" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
-			</p>
-			<p class="w3-third">
-				<label for="numero" class="w3-text-blue" >Número</label>
-				<input type="text" name='numero' maxlength="6" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"v> 
-			</p>
-		</div>
-		<div class="w3-row-padding">
-			<p class="w3-third">
-				<label for="apto" class="w3-text-blue">Apartamento</label>
-				<input type="text" name='apartamento' maxlength="6" onblur="certo(this)" onfocus="neutro(this)" class="w3-input" >  
-			</p>
-			<p class="w3-third">
-				<label for="bl" class="w3-text-blue">Bloco</label>
-				<input type="text" name='bloco' maxlength="4" onblur="certo(this)"onfocus="neutro(this)" class="w3-input"> 
-			</p>
-			<p class="w3-third">
-				<label for="compl" class="w3-text-blue">Complemento</label >
-				<input type="text" name='complemento' onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
-			</p>
-		</div>
-		<div class="w3-row-padding">
-			<p class="w3-third">
-				<label for="bairro" class="w3-text-blue">Bairro</label>
-				<input name="bairro" name='bairro' value="" type="text" id="bairro" onblur="certo(this)" onfocus="neutro(this)" class="w3-input">  
-			</p>
-			<p class="w3-third">
-				<label for="cidade" class="w3-text-blue">Cidade</label>
-				<input id="cidade" name='cidade' value="" type="text" onblur="certo(this)" onfocus="neutro(this)" class="w3-input">  
-			</p>
-			<p class="w3-third">
-				<label for="uf" class="w3-text-blue">Estado</label>
-				<select id="uf" name='estado' value="" onblur="certo(this)" onfocus="neutro(this)" class="w3-select">
-					<option value="AC">Acre</option>
-					<option value="AL">Alagoas</option>
-					<option value="AP">Amapá</option>
-					<option value="AM">Amazonas</option>
-					<option value="BA">Bahia</option>
-					<option value="CE">Ceará</option>
-					<option value="DF">Distrito Federal</option>
-					<option value="ES">Espírito Santo</option>
-					<option value="GO">Goiás</option>
-					<option value="MA">Maranhão</option>
-					<option value="MT">Mato Grosso</option>
-					<option value="MS">Mato Grosso do Sul</option>
-					<option value="MG">Minas Gerais</option>
-					<option value="PA">Pará</option>
-					<option value="PB">Paraíba</option>
-					<option value="PR">Paraná</option>
-					<option value="PE">Pernambuco</option>
-					<option value="PI">Piauí</option>
-					<option value="RJ">Rio de Janeiro</option>
-					<option value="RN">Rio Grande do Norte</option>
-					<option value="RS">Rio Grande do Sul</option>
-					<option value="RO">Rondônia</option>
-					<option value="RR">Roraima</option>
-					<option value="SC">Santa Catarina</option>
-					<option value="SP" selected >São Paulo</option>
-					<option value="SE">Sergipe</option>
-					<option value="TO">Tocantins</option>
-				</select>
-			</p>
-		</div>
-		<div class="w3-row-padding">
-			<p class="w3-third">
-				<label for="cel" class="w3-text-blue" >Celular*</label>
-				<input type="text" name='celular' id="celular" onblur="aviso_celular(this )" onfocus="retira_aviso(this, id )" maxlength="11" min="8" class="w3-input" required> 
-			</p>
-			<p class="w3-third">
-				<label for="cel2" class="w3-text-blue">Celular 2</label>
-				<input type="text" name='celular2' onblur="certo(this)" onfocus="neutro(this)" maxlength="11" class="w3-input" >  
-			</p>
-			<p class="w3-third">
-				<label for="tel" class="w3-text-blue">Telefone</label>
-				<input type="text" name='telefone' onblur="certo(this)" onfocus="neutro(this)" maxlength="11" class="w3-input"> 
-			</p>
-		</div>
-		<div class="w3-row-padding">
-			<p class="w3-third">
-				<label for="venc" class="w3-text-blue">Dia de Vencimento</label>
-				<select name='vencimento' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" required>
-					<option>10</option>
-					<option>20</option>
-				</select>
-			</p>
-			<p class="w3-third">
-				<label for="plano" class="w3-text-blue">Plano*</label>
-				<select name='plano' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" required>
-					<option>2 MEGAS --- R$44,00 </option>
-					<option>3 MEGAS --- R$53,00 </option>
-					<option>5 MEGAS --- R$62,00 </option>
-					<option selected>10 MEGAS --- R$80,00 </option>
-					<option>20 MEGAS --- R$98,00 </option>
-					<option>30 MEGAS --- R$116,00 </option>
-					<option>50 MEGAS --- R$134,00 </option>
-					<option>90 MEGAS --- R$188,00 </option>
-				</select>
-			</p>
-		</div>
+		<!--DATA DE NASCIMENTO-->
+		<p style=" float:left; width:30%; padding-right: 5px; padding-left: 5px;  " >
+			<label  class="w3-text-blue">Data de Nascimento:</label>
+			<input type="date" name='data_de_nascimento'  max="2000-12-31" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--SEXO-->
+		<p style="padding-left: 5px; float:left; width:30%;">
+			<label class="w3-text-blue">Sexo:</label>
+			<select name='sexo' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" >
+				<option value="M">MASCULINO</option>
+				<option value="F">FEMININO</option>
+				<option value="O">OUTROS</option>
+			</select>
+		</p>
+		<!--EMAIL-->
 		<p>
+			<label class="w3-text-blue">E-mail*:</label>
+			<input type="email" id="email" name='email' onblur="aviso_email(this)" onfocus="retira_aviso(this, id )" class="w3-input" required> 
+		</p>
+		<!--CEP-->
+		<p style="float: left; padding-right: 5px; width:20%;">
+			<label for="cep" class="w3-text-blue">CEP*:</label>
+			<input id="cep" name='CEP' type="text" value="" maxlength="9"  onblur="pesquisacep(this ,this.value)" onfocus="retira_aviso_cep(this, id)" class="w3-input">
+		</p>
+		<!--RUA-->
+		<p style="float: left;padding-left: 5px; width:80%;">
+			<label for="logradouro" class="w3-text-blue">Rua:</label>
+			<input id="logradouro" name='rua' value="" type="text" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--NUMERO-->
+		<p style="float:left; padding-right:5px; width:25%;">
+			<label for="numero" class="w3-text-blue" >Número:</label>
+			<input type="text" name='numero' maxlength="6" onblur="certo(this)" onfocus="neutro(this)" class="w3-input"v> 
+		</p>
+		<!--APARTAMENTO-->
+		<p style="float:left; padding-right:5px; padding-left: 5px; width:25%;">
+			<label for="apto" class="w3-text-blue">Apartamento:</label>
+			<input type="text" name='apartamento' maxlength="6" onblur="certo(this)" onfocus="neutro(this)" class="w3-input" >  
+		</p>
+		<!--BLOCO-->
+		<p style="float:left; padding-right:5px; padding-left: 5px; width:25%;">
+			<label for="bl" class="w3-text-blue">Bloco:</label>
+			<input type="text" name='bloco' maxlength="4" onblur="certo(this)"onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--COMPLEMENTO-->
+		<p style="float:left; padding-left: 5px; width:25%;">
+			<label for="compl" class="w3-text-blue">Complemento:</label >
+			<input type="text" name='complemento' onblur="certo(this)" onfocus="neutro(this)" class="w3-input"> 
+		</p>
+		<!--BAIRRO-->
+		<p style="float:left; padding-right:5px; width:40%;">
+			<label for="bairro" class="w3-text-blue">Bairro:</label>
+			<input name="bairro" name='bairro' value="" type="text" id="bairro" onblur="certo(this)" onfocus="neutro(this)" class="w3-input">  
+		</p>
+		<!--CIDADE-->
+		<p style="float:left; padding-left:5px; padding-right:5px; width:40%;">
+			<label for="cidade" class="w3-text-blue">Cidade:</label>
+			<input id="cidade" name='cidade' value="" type="text" onblur="certo(this)" onfocus="neutro(this)" class="w3-input">  
+		</p>
+		<!--ESTADO-->
+		<p style="float:left; padding-left:5px; width:20%;">
+			<label for="uf" class="w3-text-blue">Estado:</label>
+			<select id="uf" name='estado' value="" onblur="certo(this)" onfocus="neutro(this)" class="w3-select">
+				<option value="AC">Acre</option>
+				<option value="AL">Alagoas</option>
+				<option value="AP">Amapá</option>
+				<option value="AM">Amazonas</option>
+				<option value="BA">Bahia</option>
+				<option value="CE">Ceará</option>
+				<option value="DF">Distrito Federal</option>
+				<option value="ES">Espírito Santo</option>
+				<option value="GO">Goiás</option>
+				<option value="MA">Maranhão</option>
+				<option value="MT">Mato Grosso</option>
+				<option value="MS">Mato Grosso do Sul</option>
+				<option value="MG">Minas Gerais</option>
+				<option value="PA">Pará</option>
+				<option value="PB">Paraíba</option>
+				<option value="PR">Paraná</option>
+				<option value="PE">Pernambuco</option>
+				<option value="PI">Piauí</option>
+				<option value="RJ">Rio de Janeiro</option>
+				<option value="RN">Rio Grande do Norte</option>
+				<option value="RS">Rio Grande do Sul</option>
+				<option value="RO">Rondônia</option>
+				<option value="RR">Roraima</option>
+				<option value="SC">Santa Catarina</option>
+				<option value="SP" selected >São Paulo</option>
+				<option value="SE">Sergipe</option>
+				<option value="TO">Tocantins</option>
+			</select>
+		</p>
+		<!--CELULAR-->
+		<p style="float:left; padding-right:5px; width:28%;">
+			<label for="cel" class="w3-text-blue" >Celular*:</label>
+			<input type="text" name='celular' id="celular" onblur="aviso_celular(this )" onfocus="retira_aviso(this, id )" maxlength="11" min="8" class="w3-input" required> 
+		</p>
+		<!--CELULAR2-->
+		<p style="float:left; padding-left:5px; padding-right:5px; width:28%;">
+			<label for="cel2" class="w3-text-blue">Celular 2:</label>
+			<input type="text" name='celular2' onblur="certo(this)" onfocus="neutro(this)" maxlength="11" class="w3-input" >  
+		</p>
+		<!--TELEFONE-->
+		<p style="float:left; padding-left:5px; padding-right:5px; width:28%;">
+			<label for="tel" class="w3-text-blue">Telefone:</label>
+			<input type="text" name='telefone' onblur="certo(this)" onfocus="neutro(this)" maxlength="11" class="w3-input"> 
+		</p>
+		<!--VENCIMENTO-->
+		<p style="float:left; padding-left:5px; width:16%;">
+			<label for="venc" class="w3-text-blue">Vencimento:</label>
+			<select name='vencimento' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" required>
+				<option>10</option>
+				<option>20</option>
+			</select>
+		</p>
+		<!--PLANO-->
+		<p style=" padding-left:auto; width:50%;">
+			<label for="plano" class="w3-text-blue">Plano*:</label>
+			<select name='plano' onblur="certo(this)" onfocus="neutro(this)" class="w3-select" required>
+				<option>2 MEGAS --- R$44,00 </option>
+				<option>3 MEGAS --- R$53,00 </option>
+				<option>5 MEGAS --- R$62,00 </option>
+				<option selected>10 MEGAS --- R$80,00 </option>
+				<option>20 MEGAS --- R$98,00 </option>
+				<option>30 MEGAS --- R$116,00 </option>
+				<option>50 MEGAS --- R$134,00 </option>
+				<option>90 MEGAS --- R$188,00 </option>
+			</select>
+		</p>
+		<!--CABOS-->
+		<p style="padding: auto">
 			<label for="cabo" class="w3-text-blue">Possui cabos de internet na residência?</label>
 			<input type="radio" name="cabo" value='sim' class="w3-radio" > SIM
 			<input type="radio" name="cabo" value='nao' class="w3-radio" > NÃO 
 		</p>
-		<p >
+		<!--ROTEADOR-->
+		<p style="padding: auto">
 			<label for="roteador" class="w3-text-blue">Possui roteador?</label>
 			<input type="radio" name="roteador" value='sim' class="w3-radio" > SIM
 			<input type="radio" name="roteador" value='nao' class="w3-radio" > NÃO
 		</p>
-		<p >
-			<label for="periodo" class="w3-text-blue">Período da instalação</label>
+		<!--PERIODO-->
+		<p style="padding: auto">
+			<label for="periodo" class="w3-text-blue">Período da instalação:</label>
 			<input type="radio" name="periodo" value='manha' class="w3-radio" > MANHA 
 			<input type="radio" name="periodo" value='tarde' class="w3-radio" > TARDE
 			<input type="radio" name="periodo" value='comercial' class="w3-radio" > COMERCIAL 
 		</p>
-		<p>
-			<label for="pagamento" class="w3-text-blue">Forma de Pagamento</label>
+		<!--PAGAMENTO-->
+		<p style="padding: auto">
+			<label for="pagamento" class="w3-text-blue">Forma de Pagamento:</label>
 			<input type="radio" name="forma" value='DINHEIRO' class="w3-radio" > DINHEIRO
 			<input type="radio" name="forma" value='CARTAO DE CREDITO' class="w3-radio" > CARTÃO DE CRÉDITO
 			<input type="radio" name="forma" value='CARTAO DE DEBITO' class="w3-radio" > CARTAO DE DEBITO
 
 		</p>
-		<p>
+		<!--BOTAO-->
+		<div style="padding-top: 20px">
 			<button type="submit" id="botao" class="w3-btn w3-blue"> ENVIAR </button>
-		</p>
+		</div>
 	</form>
 </body>
 </html>
